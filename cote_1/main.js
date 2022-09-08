@@ -20,6 +20,26 @@ let currentState = 1;
 let numOfPapers = 7;
 let maxState = numOfPapers + 1;
 
+function displayPaper() {
+    document.write ('<div id="book" class="book">');
+    for(let i = 1; i < maxState; i++) {
+        document.write (
+            '<div id="p' + i + '" class="paper">' +
+                '<div class="front">' + 
+                    '<div id="f' + i + '" class="front-content">' +
+                        '<img class="img" src="./img/cote_1-0' + (i * 2 - 1) +'.png" alt="p' + (i * 2 - 1) + '" width="100%" height="100%">' +
+                    '</div>' +
+                '</div>' +
+                '<div class="back">' + 
+                    '<div id="b' + i + '" class="back-content">' +
+                        '<img class="img" src="./img/cote_1-0' + (i * 2) +'.png" alt="p' + (i * 2) + '" width="100%" height="100%">' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
+        );
+    }
+    document.write ('</div>');
+}
 
 function openBook() {
     book.style.transform = "translateX(50%)";
@@ -77,21 +97,6 @@ function goNext() {
     }
 }
 
-function goPrevious1() {
-    if(currentState > 1) {
-        for (i = maxState; i > 0; i--) {
-            if (currentState == 2) {
-                closeBook(true);
-            }
-            if(currentState != 1) {
-                paper(i).classList.remove("flipped");
-                paper(i).style.zIndex = maxState - currentState + 1;
-            }
-        }
-        currentState--;
-    }
-}
-
 function goPrevious() {
     if(currentState > 1) {
         switch(currentState) {
@@ -115,13 +120,13 @@ function goPrevious() {
             case 6:
                 paper5.classList.remove("flipped");
                 paper5.style.zIndex = 3;
-                    break;
+                break;
             case 7:
                 paper6.classList.remove("flipped");
                 paper6.style.zIndex = 2;
                 break;
             case 8: 
-                openBook()
+                openBook();
                 paper7.classList.remove("flipped");
                 paper7.style.zIndex = 1;
                 break;
