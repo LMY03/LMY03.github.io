@@ -100,7 +100,3 @@ i {
 .flipped .back {
     transform: rotateY(-180deg)
 }
-
-#p1 {
-    z-index: 264;
-}
