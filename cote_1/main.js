@@ -9,13 +9,13 @@ nextBtn.addEventListener("click", goNext);
 
 // Business Logic
 let currentState = 1;
-let numOfPapers = 7;
+let numOfPapers = 162;
 let maxState = numOfPapers + 1;
 
 const papers = new Array();
 for (let i = 0; i < maxState; i++) {
     papers[i] = document.querySelector('#p' + (i + 1) +'')
-    papers[i].style.zIndex = maxState - i;
+    papers[i].style.zIndex = numOfPapers - i;
 }
 
 function displayPaper() {
@@ -95,39 +95,37 @@ function goNext() {
     }
 }
 
+function goNext() {
+    if(currentState < maxState) {
+        for (let i = 0; i < maxState; i++) {
+            if (currentState == 1) {
+                openBook();
+            }
+            if (currentState == numOfPapers) {
+                closeBook(false);
+            }
+            if (currentState - i == 1) {
+                papers[i].classList.add("flipped");
+                papers[i].style.zIndex = currentState;
+            }
+        }
+        currentState++;
+    }
+}
+
 function goPrevious() {
     if(currentState > 1) {
-        switch(currentState) {
-            case 2:
+        for (let i = 0; i < maxState; i++) {
+            if (currentState == 2) {
                 closeBook(true);
-                papers[0].classList.remove("flipped");
-                papers[0].style.zIndex = 7;
-                break;
-            case 3:
-                papers[1].classList.remove("flipped");
-                papers[1].style.zIndex = 6;
-                break;
-            case 4:
-                papers[2].classList.remove("flipped");
-                papers[2].style.zIndex = 5;
-                    break;
-            case 5:
-                papers[3].classList.remove("flipped");
-                papers[3].style.zIndex = 4;
-                break;
-            case 6:
-                papers[4].classList.remove("flipped");
-                papers[4].style.zIndex = 3;
-                break;
-            case 7:
-                papers[5].classList.remove("flipped");
-                papers[5].style.zIndex = 2;
-                break;
-            case 8: 
+            }
+            if (currentState == maxState) {
                 openBook();
-                papers[6].classList.remove("flipped");
-                papers[6].style.zIndex = 1;
-                break;
+            }
+            if (currentState - i == 2) {
+                papers[i].classList.remove("flipped");
+                papers[i].style.zIndex = numOfPapers - i;
+            }
         }
         currentState--;
     }
