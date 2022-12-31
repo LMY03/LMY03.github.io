@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+    <link rel="shortcut icon" href="../public/images/APP_LOGO_RED.jpg" />
+</head>
+<body>
+    <h1>Edit Account</h1>
+        <div class="login-proper">
+            <div>
+                <form class="form-type" action="/editaccount" method="post">
+                    <div class="mb-3">
+                        <label for="mediaInput" class="form-label">Media</label>
+                        <input class="form-control" type="text" id="mediaInput" value="<%= media %>" name="mediaInput" disabled />
+                    </div>
+                    <div class="mb-3">
+                      <label for="usernameInput" class="form-label">Username</label>
+                      <input class="form-control" type="text" id="usernameInput" value="<%= username %>" name="usernameInput" disabled />
+                    </div>
+                    <div class="mb-3">
+                      <label for="passwordInput" class="form-label">Password</label>
+                      <input class="form-control" type="password" id="passwordInput" value="<%= password %>" name="passwordInput" required />
+                    </div>
+                    <div>
+                        <% let i = 0; %>
+                        <% userDetails.forEach(function (userDetails) { %>
+                            <% for (let i = 0; i < hasAccess.length; i++) { %>
+                                <% if (userDetails.username == hasAccess[i]) { %>
+                                    <input type="checkbox" name="user[<%= i %>]" value="<%= userDetails.username %>" checked />
+                                    <% break; %>
+                                <% } else { %>
+                                    <% if (i == hasAccess.length - 1) { %>
+                                        <input type="checkbox" name="user[<%= i %>]" value="<%= userDetails.username %>" />
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                            <label for="user[<%= i++ %>]"><%= userDetails.username %></label><br>
+                        <% }); %>
+                    </div>
+                    <input type="hidden" name="media" id="media" value="<%= media %>" />
+                    <input type="hidden" name="username" id="username" value="<%= username %>" />
+                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+</body>
+</html>

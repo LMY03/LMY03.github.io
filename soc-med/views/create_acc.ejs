@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+        <link rel="stylesheet" type="text/css" media="all" href="../public/CSS/login_register_CSS.css">
+        <title>Register an Account</title>
+        <link rel="shortcut icon" href="../public/images/APP_LOGO_RED.jpg" />
+    </head>
+    <body>
+        <h1>Register Account</h1>
+        <div class="login-proper">
+            <div>
+                <% if(errorMsg) { %>    
+                    <p style="font-size:140%; color:red"><b> <%= errorMsg %> </b></p>
+                <% } %>
+                <form class="form-type" action="/createaccount" method="post">
+                    <div class="mb-3">
+                        <label for="mediaInput" class="form-label">Media</label>
+                        <input class="form-control" type="text" id="mediaInput" placeholder="Enter the media" name="mediaInput" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="usernameInput" class="form-label">Username</label>
+                      <input class="form-control" type="text" id="usernameInput" placeholder="Enter your username" name="usernameInput" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="passwordInput" class="form-label">Password</label>
+                      <input class="form-control" type="password" id="passwordInput" placeholder="Enter your password" name="passwordInput" required />
+                    </div>
+                    <div>
+                        <% let i = 0; %>
+                        <% userDetails.forEach(function (userDetails) { %>
+                            <input type="checkbox" name="user[<%= i %>]" value="<%= userDetails.username %>" />
+                            <label for="user[<%= i++ %>]"><%= userDetails.username %></label><br>
+                        <% }); %>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
