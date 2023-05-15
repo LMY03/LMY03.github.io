@@ -1,0 +1,23 @@
+#game-wheel {
+	position: relative;
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
+}
+
+canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 1px solid black;
+	border-radius: 50%;
+}
+
+#result {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 24px;
+	font-weight: bold;
+}
