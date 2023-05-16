@@ -1,113 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Game Wheel</title>
-    <style>
-      #game-wheel {
-        position: relative;
-        width: 400px;
-        height: 400px;
-        margin: 0 auto;
-      }
 
-      canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        border: 1px solid black;
-        border-radius: 50%;
-      }
+<head>
+	<title>Game Wheel</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
 
-      #spin-button {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 10px;
-        font-size: 20px;
-        border-radius: 5px;
-      }
+<body>
+	<div id="game-wheel">
+		<canvas id="canvas" width="400" height="400"></canvas>
+		<p id="result"></p>
+	</div>
+	<script src="script.js"></script>
+</body>
 
-      #result {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 24px;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="game-wheel">
-      <canvas id="canvas" width="400" height="400"></canvas>
-      <button id="spin-button">Spin</button>
-      <p id="result"></p>
-    </div>
-    <script>
-      const canvas = document.getElementById('canvas');
-      const ctx = canvas.getContext('2d');
-      const colors = ['#f44336', '#9c27b0', '#2196f3', '#4caf50', '#ffeb3b', '#ff9800', '#00bcd4'];
-      const slices = 7;
-      const sliceDeg = 360 / slices;
-      const deg2rad = Math.PI / 180;
-      const spinButton = document.getElementById('spin-button');
-      const result = document.getElementById('result');
-      const spinDeg = 1080;
-      let spinning = false;
-
-      function drawSlice(deg, color, text, imageSrc) {
-			  ctx.beginPath();
-			  ctx.fillStyle = color;
-			  ctx.moveTo(200, 200);
-			  ctx.arc(200, 200, 150, deg * deg2rad, (deg + sliceDeg) * deg2rad);
-			  ctx.lineTo(200, 200);
-			  ctx.fill();
-			  
-			  const image = new Image();
-			  image.src = imageSrc;
-			  image.onload = () => {
-			    ctx.save();
-			    ctx.translate(200, 200);
-			    ctx.rotate((deg + sliceDeg / 2) * deg2rad);
-			    ctx.drawImage(image, -50, -100, 100, 100);
-			    ctx.restore();
-			  };
-			  
-			  ctx.save();
-			  ctx.translate(200,200);
-			  ctx.rotate((deg+sliceDeg/2)*deg2rad);
-			  ctx.textAlign = "center";
-			  ctx.fillStyle = "#ffffff";
-			  ctx.font = "bold 20px Arial";
-			  ctx.fillText(text, 0, -80);
-			  ctx.restore();
-			}
-
-      function drawWheel() {
-        for (let i = 0; i < slices; i++) {
-          drawSlice(i * sliceDeg, colors[i], ["Balita", "Isports", "Bayan", "BnK", "Sining", "Retrato", "IT"], ["BALITA.png", "ISPORTS.png", "BAYAN.png", "BNK.png", "SINING.png", "RETRATO.png", "IT.png"][i]);
-        }
-      }
-
-      function spinWheel() {
-        if (spinning) return;
-        spinning = true;
-        const randomSpin = Math.floor(Math.random() * slices);
-        const spinAngle = spinDeg + randomSpin * sliceDeg;
-        const animation = canvas.animate([{ transform: `rotate(0deg)` }, { transform: `rotate(${spinAngle}deg)` }], {
-          duration: 3000,
-          easing: 'cubic-bezier(.36,.56,.64,1)'
-        });
-        animation.onfinish = () => {
-          result.innerText = `You landed on ${["Balita", "Isports", "Bayan", "BnK",
-          "Sining", "Retrato", "IT"][randomSpin]}!`;
-      spinning = false;
-    };
-  }
-
-  drawWheel();
-  spinButton.addEventListener('click', spinWheel);
-</script>
-  </body>
 </html>
