@@ -66,52 +66,21 @@ function spinWheel() {
 		duration: 3000,
 		easing: 'cubic-bezier(.36,.56,.64,1)'
 	});
-	// animation.onfinish = () => {
-	// 	result.innerText = `Join ${section[randomSpin]}!`;
-  //   console.log(randomSpin);
-	// 	spinning = false;
-	// };
 
-  animation.onfinish = () => {
-    const winnerIndex = randomSpin;
-    result.innerText = `Join ${section[winnerIndex]}!`;
+  	animation.onfinish = () => {
+		const winnerIndex = randomSpin;
+		result.innerText = `Join ${section[winnerIndex]}!`;
 
-    // calculate the index of the slice that stops at 90 degrees
-    const indexAt90Degrees = Math.floor((spinAngle % 360) / sliceDeg);
-    if (indexAt90Degrees === winnerIndex) {
-        const sideText = document.getElementById('side-text');
-        sideText.innerText = `Congratulations! You won ${section[winnerIndex]}.`;
-        sideText.classList.remove('hidden');
-    }
-
-    spinning = false;
+		// calculate the index of the slice that stops at 90 degrees
+		const indexAt90Degrees = Math.floor((spinAngle % 360) / sliceDeg);
+		if (indexAt90Degrees === winnerIndex) {
+			const sideText = document.getElementById('side-text');
+			sideText.innerText = `Congratulations! You won ${section[winnerIndex]}.`;
+			sideText.classList.remove('hidden');
+		}
+    	spinning = false;
   }; 
 }
-
-// function spinWheel() {
-//   if (spinning) return;
-//   spinning = true;
-
-//   // Calculate the angle at which the arrow is pointing
-//   const arrowAngle = sliceDeg / 2;
-//   const currentAngle = parseInt(canvas.style.transform.match(/\d+/)[0]);
-//   const adjustedAngle = (currentAngle % 360) + arrowAngle;
-//   const randomSpin = Math.floor(adjustedAngle / sliceDeg);
-
-//   // Calculate the spin angle
-//   const spinAngle = spinDeg + randomSpin * sliceDeg;
-
-//   const animation = canvas.animate([{ transform: `rotate(${currentAngle}deg)` }, { transform: `rotate(${spinAngle}deg)` }], {
-//     duration: 3000,
-//     easing: 'cubic-bezier(.36,.56,.64,1)'
-//   });
-//   animation.onfinish = () => {
-//     result.innerText = `Join ${section[randomSpin]}!`;
-//     console.log(randomSpin);
-//     spinning = false;
-//   };
-// }
-
 
 drawWheel();
 spinButton.addEventListener('click', spinWheel);
