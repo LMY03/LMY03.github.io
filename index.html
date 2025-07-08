@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="logo">Jonathan Lin | Programmer</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+        </ul>
+        <div class="nav-social" id="nav-social"></div>
+    </nav>
+    <main>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-list" id="skills-list"></div>
+        </section>
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="exp-section single-list">
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <span class="exp-role">Website Manager</span> &mdash; <span class="exp-org">Ang Pahayagang Plaridel, Official Student Publication</span>
+                    </div>
+                    <div class="exp-date">November 2022 – February 2025</div>
+                    <ul>
+                        <li>Developed and maintained systems to streamline internal organizational processes using Django</li>
+                        <li>Designed and updated website layouts for optimal user experience using Wordpress</li>
+                        <li>Monitored website security and addressed potential vulnerabilities proactively</li>
+                        <li>Implemented website security measures; conducted regular backups and vulnerability scans</li>
+                        <li>Trained 10+ org members to use Wordpress effectively and maintain publication timelines</li>
+                    </ul>
+                    <a href="https://plaridel.ph" target="_blank" class="exp-view-btn" style="margin-top:1.2rem;">View Website</a>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-header">
+                        <span class="exp-role">Software Developer</span> &mdash; <span class="exp-org">School of Lifelong Learning, De La Salle University</span>
+                    </div>
+                    <div class="exp-date">September 2024 – December 2024</div>
+                    <ul>
+                        <li>Developed business process automation workflows using ProcessMaker, integrating scripting logic in PHP</li>
+                        <li>Created interactive forms, approval flows, and conditional logic to streamline internal administrative tasks</li>
+                        <li>Collaborated with existing employees to analyze manual processes and translate them into automated workflows</li>
+                        <li>Designed workflow diagrams using Lucidchart to document and communicate system logic and structure</li>
+                        <li>Tested and debugged scripts and processes to ensure seamless deployment and user experience</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-list" id="project-list"></div>
+        </section>
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <div class="cert-list" id="cert-list"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="year"></span> Jonathan Lin</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 
