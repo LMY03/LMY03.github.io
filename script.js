@@ -3,7 +3,7 @@
 // Social Media Links
 const socialLinks = [
   { href: 'https://github.com/LMY03', icon: 'fab fa-github', label: 'GitHub' },
-  { href: 'https://linkedin.com', icon: 'fab fa-linkedin', label: 'LinkedIn' },
+  // { href: 'https://www.linkedin.com/in/jonathanlin03', icon: 'fab fa-linkedin', label: 'LinkedIn' },
 ];
 
 // Projects (image-first, details always visible)
@@ -31,7 +31,7 @@ const projects = [
     modalImages: ['images/pokechess1.png'],
   },
   {
-    title: 'Artium',
+    title: 'Atrium',
     img: 'images/artium.png',
     link: 'https://github.com/Klaexis/MCO3-CCAPDEV',
     demo: '',
@@ -64,7 +64,7 @@ const projects = [
     modalImages: [],
   },
   {
-    title: 'Capstone Proxmon',
+    title: 'Capstone',
     img: 'images/capstone.png',
     link: 'https://github.com/LMY03/CAPSTONE2240',
     demo: '',
