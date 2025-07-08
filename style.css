@@ -681,19 +681,19 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0.1rem;
-    padding-left: 0.2rem;
+    margin: 0.7rem 0 0.7rem 0;
 }
 .project-category {
     background: #222;
     color: #39ff14;
-    border: 1px solid #39ff14;
-    border-radius: 12px;
-    padding: 0.2rem 0.9rem;
-    font-size: 0.95rem;
+    border-radius: 6px;
+    padding: 0.35em 0.9em;
+    font-size: 0.98em;
     font-weight: 500;
+    letter-spacing: 0.01em;
     display: inline-block;
+    margin: 0;
+    line-height: 1.6;
 }
 
 /* Modal Styles for Project Details */
@@ -710,10 +710,16 @@ footer {
     justify-content: center;
     align-items: center;
 }
+.project-modal[style*='display: block'] {
+    display: flex !important;
+}
 .project-modal-content {
     background: #222;
-    margin: 4vh auto;
-    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    /* Remove margin, center with flex parent */
+    padding-top: 2rem;
+    padding-bottom: 3.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
     border-radius: 18px;
     max-width: 900px;
     width: 95vw;
@@ -742,9 +748,13 @@ footer {
     color: #e0ffe0;
 }
 .project-modal-title {
-    color: #39ff14;
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-top: 0;
     margin-bottom: 0.7rem;
-    font-size: 1.3rem;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #39ff14;
 }
 .project-modal-tech {
     margin-bottom: 0.7rem;
@@ -755,7 +765,7 @@ footer {
 .project-modal-desc {
     color: #e0ffe0;
     font-size: 1rem;
-    margin-bottom: 0.7rem;
+    margin-bottom: 1.5rem;
 }
 .project-modal-carousel {
     width: 100%;
@@ -765,8 +775,8 @@ footer {
     margin-bottom: 1.5rem;
 }
 .project-modal-carousel img, #project-modal-img {
-  max-width: 100%;
-  max-height: 60vh;
+  max-width: 75vw;
+  max-height: 45vh;
   width: auto;
   height: auto;
   display: block;
@@ -825,6 +835,12 @@ footer {
   right: auto;
   transform: none;
   z-index: 2;
+}
+.project-modal-date {
+  font-style: italic;
+  margin: 0.3em 0 1em 0;
+  display: block;
+  color: #aaa;
 }
 @media (max-width: 600px) {
     .project-modal-content {
