@@ -9,52 +9,25 @@ const socialLinks = [
 // Projects (image-first, details always visible)
 const projects = [
   {
-    title: 'Enrollment System',
-    img: 'images/enrollment.png',
-    link: 'https://github.com/LMY03/Enrollment',
+    title: 'Capstone',
+    link: 'https://github.com/LMY03/CAPSTONE2240',
     demo: '',
-    tech: ['PHP', 'MySQL', 'Bootstrap'],
-    mainTech: 'PHP, MySQL',
-    desc: 'A web app for managing student enrollments, including admin dashboard and student management.',
-    details: 'Built for university use, this system streamlines enrollment, supports admin and student roles, and features secure authentication and reporting tools.',
-    modalImages: ['images/enrollment1.png', 'images/enrollment2.png'],
-  },
-  {
-    title: 'Pokechess Unite',
-    img: 'images/pokechess.png',
-    link: 'https://github.com/LMY03/Pokechess-Unite',
-    demo: '',
-    tech: ['Python', 'Pygame'],
-    mainTech: 'Python, Pygame',
-    desc: 'A chess-inspired Pokémon game with unique mechanics and multiplayer support.',
-    details: 'Combines chess and Pokémon gameplay, with custom sprites, animations, and multiplayer features.',
-    modalImages: ['images/pokechess1.png'],
-  },
-  {
-    title: 'Atrium',
-    img: 'images/artium.png',
-    link: 'https://github.com/Klaexis/MCO3-CCAPDEV',
-    demo: '',
-    tech: ['Node.js', 'Express', 'MongoDB'],
-    mainTech: 'Node.js, Express, MongoDB',
-    desc: 'An art community platform for sharing and discovering artworks.',
-    details: 'Features user authentication, artwork uploads, and a social feed for artists and enthusiasts.',
-    modalImages: [],
-  },
-  {
-    title: 'Pokemon-RPG',
-    img: 'images/pokemonrpg.png',
-    link: 'https://github.com/LMY03/PKM-RPG',
-    demo: '',
-    tech: ['Python'],
-    mainTech: 'Python',
-    desc: 'A classic Pokémon RPG game built in Python.',
-    details: 'Implements turn-based battles, exploration, and Pokémon collection mechanics.',
-    modalImages: [],
+    tech: ['Proxmox', 'Docker', 'PHP'],
+    mainTech: 'Proxmox, Docker, PHP',
+    desc: 'A capstone project using Proxmox and Docker for virtualization and automation.',
+    details: 'Automates deployment and management of virtual machines and containers for IT infrastructure.',
+    modalImages: [
+      'images/capstone/capstone.png',
+      'images/capstone/guacamole.png',
+      'images/capstone/login.png',
+      'images/capstone/monitoring.png',
+      'images/capstone/report.png',
+      'images/capstone/ticket.png',
+      'images/capstone/ticketing.png',
+    ],
   },
   {
     title: 'Restoran',
-    img: 'images/restoran.png',
     link: 'https://github.com/QuirosLuigi/ITIS',
     demo: '',
     tech: ['PHP', 'MySQL'],
@@ -64,15 +37,53 @@ const projects = [
     modalImages: [],
   },
   {
-    title: 'Capstone',
-    img: 'images/capstone.png',
-    link: 'https://github.com/LMY03/CAPSTONE2240',
+    title: 'Pokemon-RPG',
+    link: 'https://github.com/LMY03/PKM-RPG',
     demo: '',
-    tech: ['Proxmox', 'Docker', 'PHP'],
-    mainTech: 'Proxmox, Docker, PHP',
-    desc: 'A capstone project using Proxmox and Docker for virtualization and automation.',
-    details: 'Automates deployment and management of virtual machines and containers for IT infrastructure.',
+    tech: ['Python'],
+    mainTech: 'Python',
+    desc: 'A classic Pokémon RPG game built in Python.',
+    details: 'Implements turn-based battles, exploration, and Pokémon collection mechanics.',
+    modalImages: [
+      'images/pkm-rpg/rpg.png',
+      'images/pkm-rpg/battle.png',
+      'images/pkm-rpg/login.png',
+      'images/pkm-rpg/pokedex.png',
+    ],
+  },
+  {
+    title: 'Atrium',
+    link: 'https://github.com/Klaexis/MCO3-CCAPDEV',
+    demo: '',
+    tech: ['Node.js', 'Express', 'MongoDB'],
+    mainTech: 'Node.js, Express, MongoDB',
+    desc: 'An art community platform for sharing and discovering artworks.',
+    details: 'Features user authentication, artwork uploads, and a social feed for artists and enthusiasts.',
     modalImages: [],
+  },
+  {
+    title: 'Pokechess Unite',
+    link: 'https://github.com/LMY03/Pokechess-Unite',
+    demo: '',
+    tech: ['Python', 'Pygame'],
+    mainTech: 'Python, Pygame',
+    desc: 'A chess-inspired Pokémon game with unique mechanics and multiplayer support.',
+    details: 'Combines chess and Pokémon gameplay, with custom sprites, animations, and multiplayer features.',
+    modalImages: [
+      'images/pokechess-unite/pokechess-unite.png',
+      'images/pokechess-unite/pokemon-select.png',
+      'images/pokechess-unite/battle.png',
+    ],
+  },
+  {
+    title: 'Enrollment System',
+    link: 'https://github.com/LMY03/Enrollment',
+    demo: '',
+    tech: ['PHP', 'MySQL', 'Bootstrap'],
+    mainTech: 'PHP, MySQL',
+    desc: 'A web app for managing student enrollments, including admin dashboard and student management.',
+    details: 'Built for university use, this system streamlines enrollment, supports admin and student roles, and features secure authentication and reporting tools.',
+    modalImages: ['images/enrollment1.png', 'images/enrollment2.png'],
   },
 ];
 
@@ -123,7 +134,7 @@ if (projectList) {
   projectList.innerHTML = projects.map((p, i) => `
     <div class="project-card visual always-details" data-index="${i}">
       <div class="project-img-wrap">
-        <img src="${p.img}" alt="${p.title} Screenshot" onerror="this.style.display='none'">
+        <img src="${p.modalImages[0]}" alt="${p.title} Screenshot" onerror="this.style.display='none'">
       </div>
       <div class="project-info">
         <h3>${p.title}</h3>
@@ -151,23 +162,36 @@ function showProjectModal(index) {
   const body = document.getElementById('project-modal-body');
   if (!modal || !body) return;
   currentModalImg = 0;
-  let imagesHtml = '';
-  if (p.modalImages && p.modalImages.length > 0) {
-    imagesHtml = `
-      <div class="project-modal-carousel">
-        <img id="project-modal-img" src="${p.modalImages[0]}" alt="${p.title} screenshot" onerror="this.style.display='none'">
-        ${p.modalImages.length > 1 ? `
-          <button class="project-modal-arrow left" id="modal-arrow-left">&#8592;</button>
-          <button class="project-modal-arrow right" id="modal-arrow-right">&#8594;</button>
-        ` : ''}
-      </div>
-    `;
+
+  function renderCarousel(imgIdx) {
+    let imagesHtml = '';
+    const imgSrc = p.modalImages[imgIdx];
+    if (p.modalImages.length === 1) {
+      imagesHtml = `
+        <div class="project-modal-carousel">
+          <div class="carousel-img-wrap" style="position:relative; display:inline-block;">
+            <img id="project-modal-img" src="${imgSrc}" alt="${p.title} screenshot" onerror="this.style.display='none'">
+          </div>
+        </div>
+      `;
+    } else {
+      // Placeholder: will update after image loads
+      imagesHtml = `
+        <div class="project-modal-carousel" id="carousel-orientation">
+          <div class="carousel-img-wrap" style="position:relative; display:inline-block;">
+            <img id="project-modal-img" src="${imgSrc}" alt="${p.title} screenshot" onerror="this.style.display='none'">
+          </div>
+        </div>
+      `;
+    }
+    return imagesHtml;
   }
+
   body.innerHTML = `
     <div class="project-modal-title">${p.title}</div>
-    ${imagesHtml}
+    ${renderCarousel(0)}
     <div class="project-modal-desc">${p.details || p.desc}</div>
-    <div class="project-modal-tech"><strong>All technologies used:</strong> ${p.tech.map(tech => `<span class='tech-badge'>${tech}</span>`).join(' ')}</div>
+    <div class="project-modal-tech">${p.tech.map(tech => `<span class='tech-badge'>${tech}</span>`).join(' ')}</div>
     <div class="project-links">
       <a href="${p.link}" target="_blank" aria-label="View Source Code on GitHub"><i class="fab fa-github"></i></a>
       ${p.demo ? `<a href="${p.demo}" target="_blank">Demo</a>` : ''}
@@ -175,18 +199,79 @@ function showProjectModal(index) {
   `;
   modal.style.display = 'block';
 
-  // Carousel logic
-  if (p.modalImages && p.modalImages.length > 1) {
-    document.getElementById('modal-arrow-left').onclick = function(e) {
-      e.stopPropagation();
-      currentModalImg = (currentModalImg - 1 + p.modalImages.length) % p.modalImages.length;
-      document.getElementById('project-modal-img').src = p.modalImages[currentModalImg];
+  if (p.modalImages.length > 1) {
+    const imgEl = document.getElementById('project-modal-img');
+    imgEl.onload = function() {
+      const isLandscape = imgEl.naturalWidth >= imgEl.naturalHeight;
+      const carousel = document.getElementById('carousel-orientation');
+      if (!carousel) return;
+      if (isLandscape) {
+        // Arrows overlayed on left/right inner edge of the image
+        carousel.innerHTML = `
+          <div class="carousel-img-wrap" style="position:relative; display:inline-block;">
+            <img id="project-modal-img" src="${p.modalImages[currentModalImg]}" alt="${p.title} screenshot" onerror="this.style.display='none'">
+            <button class="project-modal-arrow left" id="modal-arrow-left" style="position:absolute; left:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-left'></i></button>
+            <button class="project-modal-arrow right" id="modal-arrow-right" style="position:absolute; right:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-right'></i></button>
+          </div>
+        `;
+      } else {
+        // Use the same overlay logic as landscape
+        carousel.innerHTML = `
+          <div class="carousel-img-wrap" style="position:relative; display:inline-block;">
+            <img id="project-modal-img" src="${p.modalImages[currentModalImg]}" alt="${p.title} screenshot" onerror="this.style.display='none'">
+            <button class="project-modal-arrow left" id="modal-arrow-left" style="position:absolute; left:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-left'></i></button>
+            <button class="project-modal-arrow right" id="modal-arrow-right" style="position:absolute; right:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-right'></i></button>
+          </div>
+        `;
+      }
+      document.getElementById('modal-arrow-left').onclick = function(e) {
+        e.stopPropagation();
+        currentModalImg = (currentModalImg - 1 + p.modalImages.length) % p.modalImages.length;
+        updateCarousel();
+      };
+      document.getElementById('modal-arrow-right').onclick = function(e) {
+        e.stopPropagation();
+        currentModalImg = (currentModalImg + 1) % p.modalImages.length;
+        updateCarousel();
+      };
     };
-    document.getElementById('modal-arrow-right').onclick = function(e) {
-      e.stopPropagation();
-      currentModalImg = (currentModalImg + 1) % p.modalImages.length;
-      document.getElementById('project-modal-img').src = p.modalImages[currentModalImg];
-    };
+    function updateCarousel() {
+      const imgEl = document.getElementById('project-modal-img');
+      imgEl.src = p.modalImages[currentModalImg];
+      imgEl.onload = function() {
+        const isLandscape = imgEl.naturalWidth >= imgEl.naturalHeight;
+        const carousel = document.getElementById('carousel-orientation');
+        if (!carousel) return;
+        if (isLandscape) {
+          carousel.innerHTML = `
+            <div class="carousel-img-wrap" style="position:relative; display:inline-block;">
+              <img id="project-modal-img" src="${p.modalImages[currentModalImg]}" alt="${p.title} screenshot" onerror="this.style.display='none'">
+              <button class="project-modal-arrow left" id="modal-arrow-left" style="position:absolute; left:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-left'></i></button>
+              <button class="project-modal-arrow right" id="modal-arrow-right" style="position:absolute; right:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-right'></i></button>
+            </div>
+          `;
+        } else {
+          // Use the same overlay logic as landscape
+          carousel.innerHTML = `
+            <div class="carousel-img-wrap" style="position:relative; display:inline-block;">
+              <img id="project-modal-img" src="${p.modalImages[currentModalImg]}" alt="${p.title} screenshot" onerror="this.style.display='none'">
+              <button class="project-modal-arrow left" id="modal-arrow-left" style="position:absolute; left:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-left'></i></button>
+              <button class="project-modal-arrow right" id="modal-arrow-right" style="position:absolute; right:8px; top:50%; transform:translateY(-50%);"><i class='fas fa-chevron-right'></i></button>
+            </div>
+          `;
+        }
+        document.getElementById('modal-arrow-left').onclick = function(e) {
+          e.stopPropagation();
+          currentModalImg = (currentModalImg - 1 + p.modalImages.length) % p.modalImages.length;
+          updateCarousel();
+        };
+        document.getElementById('modal-arrow-right').onclick = function(e) {
+          e.stopPropagation();
+          currentModalImg = (currentModalImg + 1) % p.modalImages.length;
+          updateCarousel();
+        };
+      };
+    }
   }
 }
 
